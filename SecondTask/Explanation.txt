@@ -1,0 +1,45 @@
+The APIs chosen for testing were those expected to have slightly higher usage and likely make database queries, which strains the system to provide a response. 
+This time, APIs lacking important information were also not considered. It's worth noting that conducting these tests in a local environment may impact results due to 
+limited memory or CPU availability on the machine. In these tests, the processor stayed at around 5% of its capacity during the average load test. 
+However, in the peak load test, it spiked up to 91.29% of its maximum capacity. This is likely because resources are shared between the container hosting the APIs and the 
+Virtual Users (VUs) needed by k6 for operation. Additionally, the machine has low resources and is more susceptible to not meeting the requirements for these tests.
+
+We conducted load tests using the k6 tool in a local environment to evaluate the performance of an application under average and peak load conditions. 
+The API endpoint tested was the "place an order for a pet," which utilizes a POST method. Each test lasted for 3 minutes. 
+The goal was to identify any issues such as slow response times or bottlenecks.
+
+Summary of Results
+
+Average Load Test:
+
+* Completed 753 iterations without any failures.
+* Observed a steady traffic of about 4.16 requests per second.
+* Average response time was 12.26 milliseconds, peaking at 232.08 milliseconds.
+* Most requests (90%) were completed within 20.72 milliseconds.
+* Average wait time was 11.91 milliseconds.
+
+Peak Load Test:
+
+* Completed 8926 iterations without any failures.
+* Traffic peaked at 100 Virtual Users (VUs).
+* Average response time was 8.68 milliseconds, peaking at 68.5 milliseconds.
+* Most requests (90%) were completed within 17.13 milliseconds.
+* Average wait time was 8.45 milliseconds.
+
+Analysis
+
+* In the average load test, response and wait times were acceptable for a local environment.
+
+* However, in the peak load test, while response time remained low, wait time slightly increased. This could indicate scalability issues under extreme loads.
+
+* Although we reached a peak of 100 VUs in the peak load test, it's unclear if the system can handle even higher loads without performance degradation. 
+Further testing to evaluate scalability is recommended.
+
+* Resource usage during tests was relatively low, suggesting there's room to optimize system performance. Investigating ways to improve resource efficiency could lead 
+to better performance.
+
+Conclusions
+
+The load tests provided an overview of the application's performance in a local environment, specifically focusing on the "place an order for a pet" API endpoint using 
+a POST method. Each test lasted for 3 minutes. While most results were satisfactory, areas for potential improvement were identified, especially in terms of scalability 
+and resource optimization. Further testing under higher loads is recommended, along with ongoing performance monitoring in production to ensure optimal user experience.
