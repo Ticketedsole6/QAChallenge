@@ -1,0 +1,78 @@
+Automation test cases for Pet
+
+1. PET001_findByStatus_successful
+Given that the tester needs to obtain all pets with "available" status
+When the tester send a get request to findByStatus endpoint with "available" status
+Then the tester should obtain a 200 status ok
+And the tester should obtain all pets with "available" status
+
+2. PET002_findByStatus_successful
+Given that the tester needs to obtain all pets with "pending" status
+When the tester send a get request to findByStatus endpoint with "pending" status
+Then the tester should obtain a 200 status ok
+And the tester should obtain all pets with "pending" status
+
+3. PET003_findByStatus_successful
+Given that the tester needs to obtain all pets with "sold" status
+When the tester send a get request to findByStatus endpoint with "sold" status
+Then the tester should obtain a 200 status ok
+And the tester should obtain all pets with "sold" status
+
+4. PET004_findByTags_successful
+Given that the tester needs to obtain all pets with "tag1" tag
+When the tester send a get request to findByTags endpoint with "tag1" tag
+Then the tester should obtain a 200 status ok
+And the tester should obtain all pets with "tag1" tag
+
+5. PET005_findById_successful
+Given that the tester needs to obtain all pets with "10" petId
+When the tester send a get request to findById endpoint with "10" petId
+Then the tester should obtain a 200 status ok
+And the tester should obtain all pets with "10" petId
+
+6. PET006_addNewPet_successful
+Given that the tester needs to add new pet to the store
+When the tester send a post request to pet endpoint with a new pet info
+Then the tester should obtain a 200 status ok
+And the tester in the response body should obtain the same request body
+
+7. PET007_updatePet_successful
+Given that the tester needs to update an existing pet
+When the tester send a put request to pet endpoint with an updated pet info
+Then the tester should obtain a 200 status ok
+And the tester in the response body should obtain the same request body
+
+Automation test cases for Store
+
+1. STO001_order_successful
+Given that the tester needs to place an order for a pet
+When the tester send a post request to order endpoint with valid pet info
+Then the tester should obtain a 200 status ok
+And the tester in the response body should get the same request body but in the shipDate field it may not be the same
+
+2. STO002_findPurchase_successful
+Given that the tester needs to find purchase order by id
+When the tester send a get request to order endpoint with "10" orderId
+Then the tester should obtain a 200 status ok
+And the tester in the response body should get the purchase information for "10" orderId
+
+Automation test cases for User
+
+1. USR001_createWithList_successful
+Given that the tester needs to creates list of users with given input array
+When the tester send a post request to createWithList endpoint with list users information
+Then the tester should obtain a 200 status ok
+And the tester in the response body should get the sent list
+
+2. USR002_login_successful
+Given that the tester needs to logs user into the system
+When the tester send a get request to login endpoint
+Then the tester should obtain a 200 status ok
+And the tester in the response body should get a string
+And tester in the response headers should get X-Rate-Limit and X-Expires-After parameters
+
+3. USR003_getUserByUsername_successful
+Given that the tester needs to get user information by username
+When the tester send a get request to user endpoint with "theUser" username parameter
+Then the tester should obtain a 200 status ok
+And the tester in the response body should get username information
