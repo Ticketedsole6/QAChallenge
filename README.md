@@ -13,10 +13,8 @@ In this task, I chose to automate the most complete test cases from the Swagger 
 
 ### 🛠️ Tools Used
 * Serenity
-* RestAssured
 * Cucumber
 * Gradle
-* Groovy
   
 Following the Screenplay model, the files are organized into folders for easy understanding. The framework generates a report where you can check the functionality and results of the tests.
 
